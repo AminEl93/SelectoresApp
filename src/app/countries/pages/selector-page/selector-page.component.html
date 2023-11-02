@@ -1,0 +1,20 @@
+
+<h3 class="mt-4">Selectores anidados</h3>
+
+<hr class="col-6">
+
+<form [formGroup]="selectForm">
+    <!-- Continente -->
+    <div class="row mb-3">
+        <div class="col-6">
+        <label class="form-label fw-bold">Continente</label>
+        <select formControlName="continent" class="form-control">
+            <option value="">-- Seleccione el continente --</option>
+            <option *ngFor="let continent of continents" [value]="continent">{{ continent }}</option>
+        </select>
+        </div>
+    </div>
+</form>
+
+<h4>Resultado</h4>
+<code>{{ selectForm.value | json }}</code>
