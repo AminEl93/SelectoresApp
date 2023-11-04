@@ -3,29 +3,40 @@
 
 <hr class="col-6">
 
-<form [formGroup]="selectForm">
-    
+<form [formGroup]="selectForm">    
     <!-- Continente -->
     <div class="row mb-3">
         <div class="col-6">
-        <label class="form-label fw-bold">Continente</label>
-        <select formControlName="continent" class="form-control">
-            <option value="">-- Seleccione el continente --</option>
-            <option *ngFor="let continent of continents" [value]="continent">{{ continent }}</option>
-        </select>
+            <label class="form-label fw-bold">Continente</label>
+            <select class="form-control" formControlName="continent">
+                <option value="">-- Seleccione el continente --</option>
+                <option *ngFor="let continent of continents" [value]="continent">{{ continent }}</option>
+            </select>
         </div>
     </div>
 
     <!-- País -->
     <div class="row mb-3" *ngIf="countriesByContinent.length > 0">
         <div class="col-6">
-        <label class="form-label fw-bold">País</label>
-        <select formControlName="country" class="form-control">
-            <option value="">-- Seleccione el país --</option>
-            <option *ngFor="let country of countriesByContinent" [value]="country.name">
-                {{ country.name }}
-            </option>
-        </select>
+            <label class="form-label fw-bold">País</label>
+            <select class="form-control" formControlName="country">
+                <option value="">-- Seleccione el país --</option>
+                <option *ngFor="let country of countriesByContinent" [value]="country.name">
+                    {{ country.name }}
+                </option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Frontera -->
+    <div class="row mb-3" *ngIf="borders.length > 0">
+        <div class="col">
+            <label class="form-label fw-bold">Frontera</label>
+            <select class="form-control" formControlName="border">
+                <option value="">-- Seleccione la frontera --</option>
+                <!-- <option *ngFor="let border of borders" [value]="border">{{ border }}</option> -->
+                <option *ngFor="let country of borders" [value]="country.cca3">{{ country.name }}</option>
+            </select>
         </div>
     </div>
 </form>
